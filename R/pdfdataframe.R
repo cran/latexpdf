@@ -1,11 +1,12 @@
 #' Coerce to PDF from Data Frame
 #'
-#' Coerces data.frame to document and then to pdf. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
+#' Coerces data.frame to document and then to PDF. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
 #' @export
 #' @seealso \code{\link{as.pdf.character}}
 #' @seealso \code{\link{as.pdf.document}}
 #' @seealso \code{\link{as.document.data.frame}}
 #' @seealso \code{\link{as.tabular.data.frame}}
+#' @seealso \code{\link{as.png.data.frame}}
 #' @param x data.frame
 #' @param rules numeric; will be recycled to length 3.  indicates number of horizontal lines above and below the header, and below the last row.
 #' @param walls numeric, recycled to length 2.  Number of vertical lines on left and right of table.

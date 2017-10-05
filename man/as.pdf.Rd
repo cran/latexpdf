@@ -24,12 +24,15 @@ as.pdf(x, ...)
 
 \item{clean}{whether to delete system files after pdf creation}
 }
+\value{
+the output file path (invisible)
+}
 \description{
 Coerces to PDF. Generic, with methods for character, document, and data.frame.
 
 Coerces to PDF from document. Makes a system call to 'pdflatex'. Extra arguments ignored.
 
-Coerces character to document and then to pdf. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
+Coerces character to document and then to PDF. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -44,6 +47,8 @@ Coerces character to document and then to pdf. Extra arguments passed to \code{\
 \code{\link{as.pdf.document}}
 
 \code{\link{as.pdf.data.frame}}
+
+\code{\link{as.png}}
 
 \code{\link{tex2pdf}}
 
