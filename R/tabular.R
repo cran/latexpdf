@@ -33,6 +33,7 @@ as.tabular <- function(x,...)UseMethod('as.tabular')
 #' @param na string to replace NA elements
 #' @param verbatim whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.
 #' @param escape symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.
+#' @param reserve substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters
 #' @param trim passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments
 #' @param source optional source attribution
 #' @param file optional file name
@@ -70,6 +71,7 @@ as.tabular.data.frame <- function(
   na='',
   verbatim=ifelse(sapply(x,is.numeric),TRUE,FALSE),
   escape='#',
+  reserve = TRUE,
   trim=TRUE,
   source=NULL,
   file=NULL,
@@ -80,6 +82,7 @@ as.tabular.data.frame <- function(
   footnote.size = 'tiny',
   ...
 ){
+  if(ncol(x) == 0) stop('need at least one column')
   #groom arguments
   # shall there be row group labels and column group labels?
   groupcols <- inherits(colgroups, 'character')
@@ -90,7 +93,7 @@ as.tabular.data.frame <- function(
   walls <- rep(walls, length.out = 2)
   rowgroups <- rep(rowgroups, length.out=nrow(x))
   colgroups <- rep(colgroups, length.out=ncol(x))
-  rowbreaks <- rep(rowbreaks, length.out=nrow(x)-1)
+  if(nrow(x)) rowbreaks <- rep(rowbreaks, length.out=nrow(x)-1)
   colbreaks <- rep(colbreaks, length.out=ncol(x)-1)
   if(!is.null(rowcolors))rowcolors <- rep(rowcolors, length.out=nrow(x))
   stopifnot(length(charjust)==1)
@@ -164,6 +167,7 @@ as.tabular.data.frame <- function(
   sapply(names(x)[verbatim],function(nm)if(any(!is.na(x[[nm]]) & contains(escape,x[[nm]],fixed=TRUE)))warning(nm,'contains', escape))
   x[] <- lapply(seq_along(x),function(col)if(decimal[[col]])align.decimal(x[[col]],decimal.mark = decimal.mark)else format(x[[col]],trim=trim,decimal.mark = decimal.mark,...))
   x[] <- lapply(seq_along(x),function(col)sub('^ *NA *$',na[[col]],x[[col]]))
+  if(reserve) x <- reserve(x,...)
   x[] <- lapply(seq_along(x),function(col)if(verbatim[[col]])paste0('\\verb',escape,x[[col]],escape)else x[[col]])
   x <- as.matrix(x)
   x <- apply(x,1,row2tabular) #ready
@@ -173,8 +177,9 @@ as.tabular.data.frame <- function(
   # we create an empty row to represent pre-header
   if(!is.null(rowcolors))x <- paste0('\\rowcolor{',rowcolors,'} ',x)
   x <- c('',if(groupcols) header2, header,x)
+  if(!length(rowgroups)) x <- c(x,'') # add dummy row as target for rules[[3]]
   oldbreaks <- rowbreaks
-  rowbreaks <- c(rules[[1]],if(groupcols) colgrouprule,rules[[2]], rowbreaks,rules[[3]])
+  rowbreaks <- c(rules[[1]],if(groupcols) colgrouprule, rules[[2]], if(length(rowgroups)) rowbreaks,rules[[3]])
   stopifnot(length(rowbreaks)==length(x))
   # the line end style depends on position in a rowgroup block.  Only end-of-block
   # may have a full line.
