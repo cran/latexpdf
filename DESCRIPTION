@@ -1,7 +1,7 @@
 Package: latexpdf
 Type: Package
 Title: Convert Tables to PDF or PNG
-Version: 0.1.7
+Version: 0.1.8
 Author: Tim Bergsma
 Maintainer: Tim Bergsma <bergsmat@gmail.com>
 Description: Converts table-like objects to stand-alone PDF or PNG.
@@ -17,8 +17,8 @@ Description: Converts table-like objects to stand-alone PDF or PNG.
  e.g. <https://miktex.org/>.
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 NeedsCompilation: no
-Packaged: 2021-08-17 18:02:01 UTC; tim.bergsma
+Packaged: 2023-12-19 18:00:40 UTC; tim.bergsma
 Repository: CRAN
-Date/Publication: 2021-08-17 18:40:02 UTC
+Date/Publication: 2023-12-19 18:30:02 UTC

@@ -13,44 +13,44 @@ x
 
 
 ###################################################
-### code chunk number 2: tabular.Rnw:73-75
+### code chunk number 2: tabular.Rnw:75-77
 ###################################################
 library(latexpdf)
 writeLines(as.ltable(x))
 
 
 ###################################################
-### code chunk number 3: tabular.Rnw:77-78
+### code chunk number 3: tabular.Rnw:79-80
 ###################################################
 writeLines(as.ltable(x,environments=NULL))
 
 
 ###################################################
-### code chunk number 4: tabular.Rnw:80-81
+### code chunk number 4: tabular.Rnw:82-83
 ###################################################
 writeLines(as.ltable(x,caption='Plasma Concentrations',label='pctab'))
 
 
 ###################################################
-### code chunk number 5: tabular.Rnw:83-84
+### code chunk number 5: tabular.Rnw:85-86
 ###################################################
 writeLines(as.ltable(x,caption='Plasma Concentrations',cap.top=FALSE))
 
 
 ###################################################
-### code chunk number 6: tabular.Rnw:86-87
+### code chunk number 6: tabular.Rnw:88-89
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='grid is TRUE'))
 
 
 ###################################################
-### code chunk number 7: tabular.Rnw:89-90
+### code chunk number 7: tabular.Rnw:91-92
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='Includes Walls',walls=1,rules=c(1,2,1)))
 
 
 ###################################################
-### code chunk number 8: tabular.Rnw:92-95
+### code chunk number 8: tabular.Rnw:94-97
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='Custom Breaks',
     colbreaks=c(0,2,0),rowgroups=x$subject
@@ -58,7 +58,7 @@ writeLines(as.ltable(x,grid=TRUE,caption='Custom Breaks',
 
 
 ###################################################
-### code chunk number 9: tabular.Rnw:97-100
+### code chunk number 9: tabular.Rnw:99-102
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='Custom Justify',
     numjust='left',charjust='right'
@@ -66,7 +66,7 @@ writeLines(as.ltable(x,grid=TRUE,caption='Custom Justify',
 
 
 ###################################################
-### code chunk number 10: tabular.Rnw:101-104
+### code chunk number 10: tabular.Rnw:103-106
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='Decimal Align',
     justify=c('center','left','right','decimal')
@@ -74,7 +74,7 @@ writeLines(as.ltable(x,grid=TRUE,caption='Decimal Align',
 
 
 ###################################################
-### code chunk number 11: tabular.Rnw:105-109
+### code chunk number 11: tabular.Rnw:107-111
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='Not Verbatim',
     justify=c('center','left','right','decimal'),
@@ -83,7 +83,7 @@ writeLines(as.ltable(x,grid=TRUE,caption='Not Verbatim',
 
 
 ###################################################
-### code chunk number 12: tabular.Rnw:110-114
+### code chunk number 12: tabular.Rnw:112-116
 ###################################################
 writeLines(as.ltable(x,grid=TRUE,caption='Custom Column Width',
     justify=c('center','left','right','decimal'),
@@ -92,13 +92,13 @@ writeLines(as.ltable(x,grid=TRUE,caption='Custom Column Width',
 
 
 ###################################################
-### code chunk number 13: tabular.Rnw:115-116
+### code chunk number 13: tabular.Rnw:117-118
 ###################################################
 writeLines(as.ltable(x,caption='Row Colors',rowcolors=c('white','lightgray')))
 
 
 ###################################################
-### code chunk number 14: tabular.Rnw:118-127
+### code chunk number 14: tabular.Rnw:120-129
 ###################################################
 writeLines(
   as.ltable(
@@ -112,7 +112,7 @@ writeLines(
 
 
 ###################################################
-### code chunk number 15: tabular.Rnw:129-136
+### code chunk number 15: tabular.Rnw:131-138
 ###################################################
 writeLines(
   as.ltable(
@@ -124,7 +124,7 @@ writeLines(
 
 
 ###################################################
-### code chunk number 16: tabular.Rnw:138-148
+### code chunk number 16: tabular.Rnw:140-150
 ###################################################
 writeLines(
   as.ltable(
